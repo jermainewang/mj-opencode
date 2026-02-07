@@ -1,33 +1,53 @@
 # Install Instructions for AI Agent
 
-**Goal:** Install the `mj-opencode` configuration for the user.
+**Goal:** Install `mj-opencode` configuration for the user.
 
-**Step 1: Ask User for Installation Location**
-
-Ask the user: "Where would you like to install the configuration?
+**Step 1: Ask User for Installation Scope**
+Ask: "Where would you like to install the configuration?
 1. Global (applies to all projects) - Installs to `~/.config/opencode`
 2. Project (applies to this project only) - Installs to `./.opencode`"
 
-**Step 2: Install based on user choice**
+**Step 2: Install**
 
-**If Global (`~/.config/opencode`):**
-1.  Check if `~/.config/opencode` exists.
-2.  If it exists:
-    *   Ask user if they want to overwrite existing configuration or merge.
-    *   If overwrite: backup existing config (e.g., to `~/.config/opencode.bak`), then clone.
-    *   If merge: clone to a temp dir and copy files over.
-3.  If it doesn't exist:
-    *   `git clone https://github.com/jermainewang/mj-opencode.git ~/.config/opencode`
+**Option 1: Global (`~/.config/opencode`)**
 
-**If Project (`./.opencode`):**
-1.  Check if `./.opencode` exists.
-2.  If it exists:
-    *   Ask user if they want to overwrite existing configuration or merge.
-    *   If overwrite: backup existing config (e.g., to `./.opencode.bak`), then clone.
-    *   If merge: clone to a temp dir and copy files over.
-3.  If it doesn't exist:
-    *   `git clone https://github.com/jermainewang/mj-opencode.git .opencode`
+1.  **Clone:**
+    Clone the repository to a subdirectory in `~/.config/opencode` to keep it organized and separate from other configs.
+    ```bash
+    mkdir -p ~/.config/opencode
+    git clone https://github.com/jermainewang/mj-opencode.git ~/.config/opencode/mj-opencode
+    ```
+
+2.  **Symlink Skills:**
+    Link the skills directory to `~/.config/opencode/skills/mj-opencode`. This makes the skills available under the `mj-opencode` namespace.
+    ```bash
+    mkdir -p ~/.config/opencode/skills
+    ln -sfn ~/.config/opencode/mj-opencode/skills ~/.config/opencode/skills/mj-opencode
+    ```
+
+**Option 2: Project (`./.opencode`)**
+
+1.  **Clone:**
+    Clone the repository to `.opencode/mj-opencode`.
+    ```bash
+    mkdir -p .opencode
+    git clone https://github.com/jermainewang/mj-opencode.git .opencode/mj-opencode
+    ```
+
+2.  **Symlink Skills:**
+    Link the skills directory to `.opencode/skills/mj-opencode`.
+    ```bash
+    mkdir -p .opencode/skills
+    # Navigate to the skills directory to create a relative symlink if preferred, or use absolute path.
+    # Here we use relative path for portability within the project.
+    cd .opencode/skills
+    ln -sfn ../mj-opencode/skills mj-opencode
+    cd - > /dev/null
+    ```
 
 **Step 3: Verify Installation**
-1.  List the files in the installation directory (`ls -R <install_dir>/skills`) to confirm success.
-2.  Tell the user installation is complete.
+
+1.  List the skills to confirm the symlink works:
+    *   Global: `ls -l ~/.config/opencode/skills/mj-opencode`
+    *   Project: `ls -l .opencode/skills/mj-opencode`
+2.  Tell the user installation is complete and they can now use the skills (e.g., `mj-opencode/oc-help`).
