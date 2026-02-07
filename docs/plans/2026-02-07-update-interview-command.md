@@ -1,3 +1,30 @@
+# Update Interview Command Implementation Plan
+
+> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
+
+**Goal:** Modify the `/interview` command to explicitly instruct the agent to use the `question` tool from opencode.
+
+**Architecture:** Update the markdown file defining the interview command instructions to mandate `question` tool usage for interactions instead of free-text questions.
+
+**Tech Stack:** Markdown configuration.
+
+---
+
+### Task 1: Update interview.md
+
+**Files:**
+- Modify: `~/.config/opencode/mj-opencode/commands/interview.md`
+
+**Step 1: Read current content**
+(Already read in previous turn, but good practice to verify)
+```bash
+cat ~/.config/opencode/mj-opencode/commands/interview.md
+```
+
+**Step 2: Update content**
+Rewrite the file to include specific instructions about using the `question` tool.
+
+```markdown
 ---
 description: Conduct an interactive interview to gather information.
 ---
@@ -23,3 +50,10 @@ You are an expert interviewer. Your goal is to gather comprehensive information 
 *   Be professional yet conversational.
 *   Do not overwhelm the user with multiple questions in one turn.
 *   Encourage the user to elaborate.
+```
+
+**Step 3: Verify**
+Read the file back to ensure changes are applied correctly.
+```bash
+cat ~/.config/opencode/mj-opencode/commands/interview.md
+```
