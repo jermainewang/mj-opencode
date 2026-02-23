@@ -13,13 +13,14 @@ Answer Daytona questions by searching the bundled Daytona reference docs that sh
 
 ## Docs Scope
 
-Only use the docs bundled next to this file:
+Only use the docs bundled with this skill:
 
-- `skills/daytona-help/daytona-docs/`
+- `daytona-docs/` (relative to this `SKILL.md`)
 
-When this skill is installed globally, the same folder exists under:
+Common locations you may see in practice:
 
-- `~/.config/opencode/skills/daytona-help/daytona-docs/`
+- Repo checkout: `skills/daytona-help/daytona-docs/`
+- Global install: `~/.config/opencode/skills/daytona-help/daytona-docs/`
 
 ## Workflow
 
@@ -55,7 +56,7 @@ Citation format:
 
 If you cannot find it after searching and reading:
 
-"I could not find information about <topic> within the bundled Daytona docs (`skills/daytona-help/daytona-docs/`)."
+"I could not find information about <topic> within the bundled Daytona docs (`daytona-docs/`)."
 
 Then offer the nearest related doc you did find (with citations), or ask for a narrower target (e.g., "Dex GitHub connector" vs "linking GitHub account").
 
