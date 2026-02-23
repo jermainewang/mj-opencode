@@ -11,6 +11,23 @@ Ask: "Where would you like to install the configuration?
 
 **Option 1: Global (`~/.config/opencode`)**
 
+### Option 1A (Recommended if you only want Daytona docs): Copy the `daytona-help` skill
+
+This installs the Daytona documentation lookup skill directly into your global OpenCode skills folder, without cloning this repo.
+
+```bash
+mkdir -p ~/.config/opencode/skills
+cp -a ./skills/daytona-help ~/.config/opencode/skills/daytona-help
+```
+
+Verify:
+
+```bash
+ls -l ~/.config/opencode/skills/daytona-help
+```
+
+### Option 1B: Install full `mj-opencode` config (clone + symlinks)
+
 1.  **Clone:**
     Clone the repository to a subdirectory in `~/.config/opencode` to keep it organized and separate from other configs.
     ```bash
